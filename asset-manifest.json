@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/my-ghamentory-2k22/static/css/main.619783aa.css",
+    "main.js": "/my-ghamentory-2k22/static/js/main.ef9dbea3.js",
+    "static/js/787.94b9fc60.chunk.js": "/my-ghamentory-2k22/static/js/787.94b9fc60.chunk.js",
+    "static/media/lamagiadelcine.jpg": "/my-ghamentory-2k22/static/media/lamagiadelcine.176bcb40eccbc5df4838.jpg",
+    "index.html": "/my-ghamentory-2k22/index.html",
+    "main.619783aa.css.map": "/my-ghamentory-2k22/static/css/main.619783aa.css.map",
+    "main.ef9dbea3.js.map": "/my-ghamentory-2k22/static/js/main.ef9dbea3.js.map",
+    "787.94b9fc60.chunk.js.map": "/my-ghamentory-2k22/static/js/787.94b9fc60.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.619783aa.css",
+    "static/js/main.ef9dbea3.js"
+  ]
+}
