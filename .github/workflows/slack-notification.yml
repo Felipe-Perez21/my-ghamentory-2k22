@@ -1,7 +1,9 @@
 name: Send a Slack message
+
 on: [push]
+
 jobs:
-  Send the slack message:
+  Send-the-slack-message:
     runs-on: ubuntu-latest
       steps:
         - name: Notify slack
