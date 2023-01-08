@@ -17,3 +17,12 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
+  Send the slack message:
+    runs-on: ubuntu-latest
+      steps:
+        - name: Notify slack
+          env:
+            SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          uses: pullreminders/slack-action@master
+          with:
+            args: '{\"channel\":\"C04HYQTG9SN\",\"text\":\"Hello world\"}'
