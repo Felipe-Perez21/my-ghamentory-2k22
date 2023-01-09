@@ -12,7 +12,7 @@ jobs:
         with:
           # Slack channel id, channel name, or user id to post message.
           # See also: https://api.slack.com/methods/chat.postMessage#channels
-          channel-id: 'C04HYQTG9SN'
+          channel-id: ${{secrets.SLACK_CHANNEL_ID}}
           # For posting a rich message using Block Kit
           payload: |
             {
