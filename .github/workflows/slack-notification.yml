@@ -6,7 +6,7 @@ jobs:
   my-job:
     runs-on: ubuntu-latest
     steps:
-      - name: Post to a Slack channel
+      - name: Post for a new push
         id: slack
         uses: slackapi/slack-github-action@v1.23.0
         with:
