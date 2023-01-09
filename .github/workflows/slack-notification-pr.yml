@@ -1,31 +1,29 @@
-name: Send a Slack message
+name: Slack Pull Request Open Notification
 
-on: [pull_request]
+on:
+  pull_request:
+    types: [opened, reopened]
 
 jobs:
-  my-job:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Post for a new push
-        id: slack
-        uses: slackapi/slack-github-action@v1.23.0
-        with:
-          # Slack channel id, channel name, or user id to post message.
-          # See also: https://api.slack.com/methods/chat.postMessage#channels
-          channel-id: ${{secrets.SLACK_CHANNEL_ID}}
-          # For posting a rich message using Block Kit
-          payload: |
-            {
-              "text": "GitHub Action build result: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}",
-              "blocks": [
-                {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "GitHub Action build result: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
-                  }
-                }
-              ]
-            }
-        env:
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+    - name: Notify slack pr open
+      env: 
+        SLACK_WEBHOOK_URL : ${{ secrets.SLACK_WEBHOOK_URL }}
+        PULL_REQUEST_NUMBER : ${{ github.event.pull_request.number }}
+        PULL_REQUEST_TITLE : ${{ github.event.pull_request.title }}
+        PULL_REQUEST_AUTHOR_NAME : ${{ github.event.pull_request.user.login }}
+        PULL_REQUEST_AUTHOR_ICON_URL : ${{ github.event.pull_request.user.avatar_url }}
+        PULL_REQUEST_URL : ${{ github.event.pull_request.html_url }}
+        PULL_REQUEST_BODY : ${{ github.event.pull_request.body }}
+        PULL_REQUEST_COMPARE_BRANCH_OWNER: ${{ github.event.pull_request.head.repo.owner.login }}
+        PULL_REQUEST_COMPARE_BRANCH_NAME : ${{ github.event.pull_request.head.ref }}
+        PULL_REQUEST_BASE_BRANCH_OWNER: ${{ github.event.pull_request.base.repo.owner.login }}
+        PULL_REQUEST_BASE_BRANCH_NAME : ${{ github.event.pull_request.base.ref }}
+        IS_SEND_HERE_MENTION : true
+        MAKE_PRETTY : false
+        MAKE_COMPACT : true
+        IS_PR_FROM_FORK: false
+        SEND_USER_ID_MENTIONS : U04JNFU25MW
+      uses: jun3453/slack-pr-open-notification-action@v1.3.0
