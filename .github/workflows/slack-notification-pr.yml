@@ -14,3 +14,5 @@ jobs:
           slack-bot-user-oauth-access-token: ${{ secrets.SLACK_BOT_TOKEN }}
           slack-channel: secrets.SLACK_CHANNEL_ID
           slack-text: Hello! Event "${{ github.event_name }}" in "${{ github.repository }}" 🤓
+
+# test of pr
